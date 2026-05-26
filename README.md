@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Loja Virtual - E-commerce
 O sistema é um **projeto de estudo** desenvolvido do inicio para montar uma loja virtual de exemplo.
 
@@ -112,3 +113,6 @@ Caso queira trocar ideias ou sugerir melhorias:
 ---
 
 
+=======
+"# lojavirtual" 
+>>>>>>> c0778fe (criado as entidades)
