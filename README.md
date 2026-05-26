@@ -111,7 +111,3 @@ Caso queira trocar ideias ou sugerir melhorias:
 
 ---
 
-
-=======
-"# lojavirtual" 
->>>>>>> c0778fe (criado as entidades)
