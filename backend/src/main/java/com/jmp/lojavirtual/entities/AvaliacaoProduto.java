@@ -16,27 +16,38 @@ public class AvaliacaoProduto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private Integer nota;
-	
-	@ManyToOne 
+
+	private String descricao;
+
+	@ManyToOne
 	@JoinColumn(name = "pessoa_id")
 	private Pessoa pessoa;
-	
-	@ManyToOne 
+
+	@ManyToOne
 	@JoinColumn(name = "produto_id")
 	private Produto produto;
-	
+
 	public AvaliacaoProduto() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AvaliacaoProduto(Long id, Integer nota, Pessoa pessoa, Produto produto) {
+	public AvaliacaoProduto(Long id, Integer nota, String descricao, Pessoa pessoa, Produto produto) {
 		super();
 		this.id = id;
 		this.nota = nota;
+		this.descricao = descricao;
 		this.pessoa = pessoa;
 		this.produto = produto;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public Long getId() {
@@ -87,6 +98,5 @@ public class AvaliacaoProduto {
 		AvaliacaoProduto other = (AvaliacaoProduto) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
+
 }
