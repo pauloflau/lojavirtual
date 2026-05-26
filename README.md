@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Loja Virtual - E-commerce
 O sistema é um **projeto de estudo** desenvolvido do inicio para montar uma loja virtual de exemplo.
 
