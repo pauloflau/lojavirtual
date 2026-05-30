@@ -2,6 +2,7 @@ package com.jmp.lojavirtual.entities;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
@@ -10,6 +11,7 @@ import jakarta.persistence.Table;
 @Table(name="pessoa_fisica")
 @PrimaryKeyJoinColumn(name="pessoa_id")
 public class PessoaFisica extends Pessoa{
+	@Column(nullable = false)
 	private String cpf;
 	
 	private LocalDate dataNascimento;

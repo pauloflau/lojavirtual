@@ -22,11 +22,11 @@ public class NotaItemProduto {
 	private Double quantidade;
 
 	@ManyToOne // * notaItemProduto pode ter 1 notaFiscalCompra
-	@JoinColumn(name = "nota_fiscal_compra_id")
+	@JoinColumn(name = "nota_fiscal_compra_id", nullable = false)
 	private NotaFiscalCompra notaFiscalCompra;
 
 	@ManyToOne // * notaItemProduto pode ter 1 produto
-	@JoinColumn(name = "produto_id")
+	@JoinColumn(name = "produto_id", nullable = false)
 	private Produto produto;
 
 	public NotaItemProduto() {

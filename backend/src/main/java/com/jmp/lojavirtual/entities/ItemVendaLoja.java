@@ -2,6 +2,7 @@ package com.jmp.lojavirtual.entities;
 
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,14 +18,15 @@ public class ItemVendaLoja {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(nullable = false)
 	private Double quantidade;
 
 	@ManyToOne
-	@JoinColumn(name = "produto_id")
+	@JoinColumn(name = "produto_id", nullable = false)
 	private Produto produto;
 	
 	@ManyToOne 
-	@JoinColumn(name = "venda_compra_loja_virtual_id")
+	@JoinColumn(name = "venda_compra_loja_virtual_id", nullable = false)
 	private VendaCompraLojaVirtual vendaCompraLojaVirtual;
 	
 	public ItemVendaLoja() {

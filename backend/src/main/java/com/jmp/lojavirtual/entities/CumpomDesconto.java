@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,23 +17,26 @@ public class CumpomDesconto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	@Column(nullable = false)
 	private String codigoDescricao;
 	private BigDecimal valorRealDesconto;
-	private BigDecimal valorPorcentagemDescricao;
-	private LocalDate dataValidadeCumpom;
+	private BigDecimal valorPorcentagemDesconto;
 	
+	@Column(nullable = false)
+	private LocalDate dataValidadeCumpom;
+
 	public CumpomDesconto() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public CumpomDesconto(Long id, String codigoDescricao, BigDecimal valorRealDesconto,
-			BigDecimal valorPorcentagemDescricao, LocalDate dataValidadeCumpom) {
+			BigDecimal valorPorcentagemDesconto, LocalDate dataValidadeCumpom) {
 		super();
 		this.id = id;
 		this.codigoDescricao = codigoDescricao;
 		this.valorRealDesconto = valorRealDesconto;
-		this.valorPorcentagemDescricao = valorPorcentagemDescricao;
+		this.valorPorcentagemDesconto = valorPorcentagemDesconto;
 		this.dataValidadeCumpom = dataValidadeCumpom;
 	}
 
@@ -60,12 +64,12 @@ public class CumpomDesconto {
 		this.valorRealDesconto = valorRealDesconto;
 	}
 
-	public BigDecimal getValorPorcentagemDescricao() {
-		return valorPorcentagemDescricao;
+	public BigDecimal getValorPorcentagemDesconto() {
+		return valorPorcentagemDesconto;
 	}
 
-	public void setValorPorcentagemDescricao(BigDecimal valorPorcentagemDescricao) {
-		this.valorPorcentagemDescricao = valorPorcentagemDescricao;
+	public void setValorPorcentagemDesconto(BigDecimal valorPorcentagemDesconto) {
+		this.valorPorcentagemDesconto = valorPorcentagemDesconto;
 	}
 
 	public LocalDate getDataValidadeCumpom() {
@@ -92,6 +96,5 @@ public class CumpomDesconto {
 		CumpomDesconto other = (CumpomDesconto) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
+
 }

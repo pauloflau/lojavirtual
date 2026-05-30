@@ -1,10 +1,12 @@
 package com.jmp.lojavirtual.entities;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import com.jmp.lojavirtual.entities.enums.StatusContaPagar;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -22,11 +24,18 @@ public class ContaPagar {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(nullable = false)
 	private String descricao;
 
 	@Enumerated(EnumType.STRING)
 	private StatusContaPagar status;
 
+	@Column(nullable = false)
+	private LocalDate dtVencimento;
+
+	private LocalDate dtPagamento;
+
+	@Column(nullable = false)
 	private BigDecimal valorTotal = BigDecimal.ZERO;
 
 	private BigDecimal valorDesconto = BigDecimal.ZERO;
@@ -42,12 +51,14 @@ public class ContaPagar {
 	public ContaPagar() {
 	}
 
-	public ContaPagar(Long id, String descricao, StatusContaPagar status, BigDecimal valorTotal,
-			BigDecimal valorDesconto, Pessoa pessoa, Pessoa pessoaFornecedor) {
+	public ContaPagar(Long id, String descricao, StatusContaPagar status, LocalDate dtVencimento, LocalDate dtPagamento,
+			BigDecimal valorTotal, BigDecimal valorDesconto, Pessoa pessoa, Pessoa pessoaFornecedor) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
 		this.status = status;
+		this.dtVencimento = dtVencimento;
+		this.dtPagamento = dtPagamento;
 		this.valorTotal = valorTotal;
 		this.valorDesconto = valorDesconto;
 		this.pessoa = pessoa;
@@ -76,6 +87,22 @@ public class ContaPagar {
 
 	public void setStatus(StatusContaPagar status) {
 		this.status = status;
+	}
+
+	public LocalDate getDtVencimento() {
+		return dtVencimento;
+	}
+
+	public void setDtVencimento(LocalDate dtVencimento) {
+		this.dtVencimento = dtVencimento;
+	}
+
+	public LocalDate getDtPagamento() {
+		return dtPagamento;
+	}
+
+	public void setDtPagamento(LocalDate dtPagamento) {
+		this.dtPagamento = dtPagamento;
 	}
 
 	public BigDecimal getValorTotal() {
@@ -108,11 +135,6 @@ public class ContaPagar {
 
 	public void setPessoaFornecedor(Pessoa pessoaFornecedor) {
 		this.pessoaFornecedor = pessoaFornecedor;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
 	}
 
 	@Override

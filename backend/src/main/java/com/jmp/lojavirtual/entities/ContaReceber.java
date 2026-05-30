@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import com.jmp.lojavirtual.entities.enums.StatusContaReceber;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,6 +26,7 @@ public class ContaReceber {
 
 	private StatusContaReceber status;
 
+	@Column(nullable = false)
 	private LocalDate dtVencimento;
 
 	private LocalDate dtPagamento;

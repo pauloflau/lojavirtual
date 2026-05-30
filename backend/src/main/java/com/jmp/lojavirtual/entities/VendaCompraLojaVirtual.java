@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,36 +22,41 @@ public class VendaCompraLojaVirtual {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "pessoa_id")
+	@JoinColumn(name = "pessoa_id", nullable = false)
 	private Pessoa pessoa;
 
 	@ManyToOne
-	@JoinColumn(name = "endereco_entrega_id")
+	@JoinColumn(name = "endereco_entrega_id", nullable = false)
 	private Endereco enderecoEntrega;
 	
 	@ManyToOne
-	@JoinColumn(name = "endereco_cobranca_id")
+	@JoinColumn(name = "endereco_cobranca_id", nullable = false)
 	private Endereco enderecoCobranca;
 
+	@Column(nullable = false)
 	private BigDecimal valorTotal = BigDecimal.ZERO;
 	
 	private BigDecimal valorDesconto = BigDecimal.ZERO;
 	
 	@ManyToOne
-	@JoinColumn(name = "forma_pagamento_id")
+	@JoinColumn(name = "forma_pagamento_id", nullable = false)
 	private Endereco formaPagamento;
 		
 	@OneToOne //1 venda pra 1 notafiscal
-	@JoinColumn(name = "nota_fiscal_venda_id")
+	@JoinColumn(name = "nota_fiscal_venda_id", nullable = false)
 	private NotaFiscalVenda notaFiscalVenda;
 	
 	@ManyToOne
 	@JoinColumn(name = "cumpom_desconto_id")
 	private CumpomDesconto cumpomDesconto;
 	
+	@Column(nullable = false)
 	private BigDecimal valorFrete = BigDecimal.ZERO;
+	@Column(nullable = false)
 	private Integer diaEntrega;
+	@Column(nullable = false)
 	private LocalDate dataVenda;
+	@Column(nullable = false)
 	private LocalDate dataEntrega;
 	
 	public VendaCompraLojaVirtual() {

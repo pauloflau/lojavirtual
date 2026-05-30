@@ -17,18 +17,23 @@ public class NotaFiscalVenda {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(nullable = false)
 	private String numero;
+	
+	@Column(nullable = false)
 	private String serie;
+	
+	@Column(nullable = false)
 	private String tipo;
 	
-	@Column(columnDefinition = "TEXT")
+	@Column(columnDefinition = "TEXT", nullable = false)
 	private String xml;
 
-	@Column(columnDefinition = "TEXT")
+	@Column(columnDefinition = "TEXT", nullable = false)
 	private String pdf;
 	
 	@OneToOne //1 venda pra 1 notafiscal
-	@JoinColumn(name = "venda_compra_loja_virtual_id")
+	@JoinColumn(name = "venda_compra_loja_virtual_id", nullable = false)
 	private VendaCompraLojaVirtual vendaCompraLojaVirtual;
 	
 	public NotaFiscalVenda() {

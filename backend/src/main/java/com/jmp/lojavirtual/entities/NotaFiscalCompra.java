@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,20 +20,29 @@ public class NotaFiscalCompra {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(nullable = false)
 	private String numeroNota;
+	
+	@Column(nullable = false)
 	private String serieNota;
 	private String descricaoObs;
+	
+	@Column(nullable = false)
 	private BigDecimal valorTotal;
 	private BigDecimal valorDesconto;
-	private BigDecimal valorIcms;	
+	
+	@Column(nullable = false)
+	private BigDecimal valorIcms;
+	
+	@Column(nullable = false)
 	private LocalDate dataCompra;
 	
 	@ManyToOne // * notafiscal pode ter 1 pessoa
-	@JoinColumn(name = "pessoa_id")
+	@JoinColumn(name = "pessoa_id", nullable = false)
 	private Pessoa pessoa;
 	
 	@ManyToOne // * notafiscal pode ter 1 pessoa
-	@JoinColumn(name = "conta_pagar_id")
+	@JoinColumn(name = "conta_pagar_id", nullable = false)
 	private ContaPagar contaPagar;
 	
 	public NotaFiscalCompra() {

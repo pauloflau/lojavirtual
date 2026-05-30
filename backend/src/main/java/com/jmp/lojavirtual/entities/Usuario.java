@@ -16,6 +16,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @SuppressWarnings("serial")
@@ -26,26 +27,31 @@ public class Usuario implements UserDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(unique = true)
+	@Column(unique = true, nullable = false)
 	private String login;
+	@Column(nullable = false)
 	private String senha;
+	@Column(nullable = false)
 	private LocalDateTime dataAtualSenha;
 
+	@ManyToOne
+	@JoinColumn(name = "pessoa_id", nullable = false)
+	private Pessoa pessoa;
+
 	@ManyToMany
-	@JoinTable(name = "usuario_acesso", 
-	joinColumns = @JoinColumn(name = "usuario_id"), 
-	inverseJoinColumns = @JoinColumn(name = "perfil_id"))
+	@JoinTable(name = "usuario_acesso", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "perfil_id"))
 	private Set<Perfil> perfis = new HashSet<>();
 
 	public Usuario() {
 	}
 
-	public Usuario(Long id, String login, String senha, LocalDateTime dataAtualSenha) {
+	public Usuario(Long id, String login, String senha, LocalDateTime dataAtualSenha, Pessoa pessoa) {
 		super();
 		this.id = id;
 		this.login = login;
 		this.senha = senha;
 		this.dataAtualSenha = dataAtualSenha;
+		this.pessoa = pessoa;
 	}
 
 	public Long getId() {
@@ -80,6 +86,18 @@ public class Usuario implements UserDetails {
 		this.dataAtualSenha = dataAtualSenha;
 	}
 
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
+	public Set<Perfil> getPerfis() {
+		return perfis;
+	}
+
 	public Set<Perfil> getAcessos() {
 		return perfis;
 	}
@@ -98,23 +116,24 @@ public class Usuario implements UserDetails {
 	public String getUsername() {
 		return this.login;
 	}
+
 	@Override
 	public boolean isAccountNonExpired() {
-	    return true;
+		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-	    return true;
+		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-	    return true;
+		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
-	    return true;
+		return true;
 	}
 }

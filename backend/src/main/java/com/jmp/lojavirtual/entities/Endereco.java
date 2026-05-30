@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import com.jmp.lojavirtual.entities.enums.TipoEndereco;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -21,18 +22,24 @@ public class Endereco {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(nullable = false)
 	private String ruaLogra;
+	@Column(nullable = false)
 	private String cep;
 	private String numero;
 	private String complemento;
+	@Column(nullable = false)
 	private String bairro;
+	@Column(nullable = false)
 	private String uf;
+	@Column(nullable = false)
 	private String cidade;
 
 	@ManyToOne // * enderecos pode ter 1 pessoa
 	@JoinColumn(name = "pessoa_id")
 	private Pessoa pessoa;
 
+	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private TipoEndereco tipoEndereco;
 

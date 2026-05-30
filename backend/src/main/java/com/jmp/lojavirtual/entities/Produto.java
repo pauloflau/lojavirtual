@@ -16,19 +16,28 @@ public class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	@Column(nullable = false)
 	private String tipoUnidade;
+	@Column(nullable = false)
 	private String nome;
-	private Boolean ativo;
+	@Column(nullable = false)
+	private Boolean ativo = Boolean.TRUE;
 
-	@Column(columnDefinition = "TEXT")
+	@Column(columnDefinition = "TEXT", nullable = false)
 	private String descricao;
 
 	/* Nota item nota produto - ASSOCIAR */
+	@Column(nullable = false)
 	private Double peso;
+	@Column(nullable = false)
 	private Double largura;
+	@Column(nullable = false)
+	private Double altura;
+	@Column(nullable = false)
 	private Double profundidade;
+	@Column(nullable = false)
 	private BigDecimal valorVenda = BigDecimal.ZERO;
+	@Column(nullable = false)
 	private Integer quantidadeEstoque = 0;
 	private Integer quantidadeAlertaEstoque = 0;
 	private String linkYoutube;
@@ -40,7 +49,7 @@ public class Produto {
 	}
 
 	public Produto(Long id, String tipoUnidade, String nome, Boolean ativo, String descricao, Double peso,
-			Double largura, Double profundidade, BigDecimal valorVenda, Integer quantidadeEstoque,
+			Double largura, Double altura, Double profundidade, BigDecimal valorVenda, Integer quantidadeEstoque,
 			Integer quantidadeAlertaEstoque, String linkYoutube, Boolean alertaQuantidadeEstoque,
 			Integer quantidadeClique) {
 		super();
@@ -51,6 +60,7 @@ public class Produto {
 		this.descricao = descricao;
 		this.peso = peso;
 		this.largura = largura;
+		this.altura = altura;
 		this.profundidade = profundidade;
 		this.valorVenda = valorVenda;
 		this.quantidadeEstoque = quantidadeEstoque;
@@ -114,6 +124,14 @@ public class Produto {
 
 	public void setLargura(Double largura) {
 		this.largura = largura;
+	}
+
+	public Double getAltura() {
+		return altura;
+	}
+
+	public void setAltura(Double altura) {
+		this.altura = altura;
 	}
 
 	public Double getProfundidade() {
