@@ -1,0 +1,87 @@
+# =========================
+# Eclipse
+# =========================
+.classpath
+.project
+.settings/
+bin/
+target/
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# =========================
+# IntelliJ (caso abra depois)
+# =========================
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# =========================
+# Maven / Gradle build
+# =========================
+target/
+build/
+out/
+
+# Maven wrapper logs
+.mvn/wrapper/maven-wrapper.jar.log
+
+# =========================
+# Spring Boot / Java
+# =========================
+*.log
+logs/
+*.tmp
+*.temp
+
+# Spring Boot generated files
+spring.log
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Environment / Secrets (IMPORTANTE)
+# =========================
+.env
+application-local.properties
+application-secret.properties
+
+# Keys / certs
+*.pem
+*.key
+*.p12
+
+# =========================
+# Coverage / tests
+# =========================
+/coverage/
+*.exec
+
+# =========================
+# Lombok / annotation processing (às vezes gerado)
+# =========================
+.factorypath
+
+# =========================
+# STS
+# ========================= 
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# ========================= 
+# VS Code ###
+# ========================= 
+.vscode/
