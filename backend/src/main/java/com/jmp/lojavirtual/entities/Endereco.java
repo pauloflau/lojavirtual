@@ -2,7 +2,11 @@ package com.jmp.lojavirtual.entities;
 
 import java.util.Objects;
 
+import com.jmp.lojavirtual.enums.TipoEndereco;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,6 +34,9 @@ public class Endereco {
 		nullable = false) //nao salva endereco sem pessoa 
 	private Pessoa pessoa;
 	
+	@Enumerated(EnumType.STRING)
+	private TipoEndereco tipoEndereco;
+		
 	public Endereco() {
 		// TODO Auto-generated constructor stub
 	}
@@ -118,6 +125,14 @@ public class Endereco {
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
+	}
+
+	public TipoEndereco getTipoEndereco() {
+		return tipoEndereco;
+	}
+
+	public void setTipoEndereco(TipoEndereco tipoEndereco) {
+		this.tipoEndereco = tipoEndereco;
 	}
 
 	@Override
